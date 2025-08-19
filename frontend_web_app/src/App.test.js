@@ -1,8 +1,16 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { SearchProvider } from './context/SearchContext';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders header brand', () => {
+  render(
+    <BrowserRouter>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </BrowserRouter>
+  );
+  const brand = screen.getByText(/recipe explorer/i);
+  expect(brand).toBeInTheDocument();
 });
